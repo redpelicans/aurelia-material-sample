@@ -1,0 +1,83 @@
+<template>
+  <div class="transac-header">
+    <div class="affixed-container container">
+      <span class="header-title">Transac List</span> from {{params.startDate | date: 'yyyy/MM/dd'}} to {{params.endDate | date: 'yyyy/MM/dd'}}
+    </div>
+    
+    <div class="container">
+      <form role="form">
+        <div class="col-md-4">
+          <span class="header-title">Transacs List</span>
+        </div>
+        <div class="col-md-2">
+          <label>Date Mode</label>
+          <select class="form-control" ng-model="params.dateMode" ng-options="m for m in params.dateModes" ng-change="dateModeHasChanged()">
+          </select>
+        </div>
+
+        <div class="col-md-2">
+          <label>{{params.startDateName}}</label>
+          <div class="input-group">
+            <input type="text" maxlength="10" size="10" class="form-control" show-weeks="false" datepicker-popup="yyyy/MM/dd" ng-model="params.startDate" required is-open="startDateOpened" max="params.endDate" ng-change="formHasChanged()"/>
+            <span class="input-group-btn">
+              <button class="btn btn-default" ng-click="startDateOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+            </span>
+          </div>
+        </div>
+
+        <div class="col-md-2">
+          <label>{{params.endDateName}}</label>
+          <div class="input-group">
+            <input type="text" maxlength="10" size="10" class="form-control" show-weeks="false" datepicker-popup="yyyy/MM/dd" ng-model="params.endDate" require is-open="endDateOpened" min="params.startDate" ng-change="formHasChanged()"/>
+            <span class="input-group-btn">
+              <button class="btn btn-default" ng-click="endDateOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+            </span>
+          </div>
+        </div>
+
+        <div class="col-md-2">
+          <label>Filter</label>
+          <div class="input-group">
+            <input type="text" maxlength="10" size="10" class="form-control test-filter"  ng-model="params.search" />
+            <span class="input-group-btn">
+              <button class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
+            </span>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="container transac-detail">
+    <div class="row">
+      <table class="table table-hover result-table">
+        <thead>
+          <tr>
+            <th></th>
+            <th><a href="" style="color: black;" ng-click="params.sort='name'; params.reverse=!params.reverse">Name</a></th>
+            <th><a href="" style="color: black;" ng-click="params.sort='server'; params.reverse=!params.reverse">Server</a></th>
+            <th><a href="" style="color: black;" ng-click="params.sort='valueDate'; params.reverse=!params.reverse">ValueDate</a></th>
+            <th><a href="" style="color: black;" ng-click="params.sort='processingTime'; params.reverse=!params.reverse">FirstEventTime</a></th>
+            <th><a href="" style="color: black;" ng-click="params.sort='delay'; params.reverse=!params.reverse">LastEventTime</a></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr  class="Xtransac-listing" repeat.for="transac of transacs | filter:params.search | orderBy:params.sort:params.reverse" >
+            <td style="text-align: left;"> 
+              <span class="{{ transac.statusIcon }}"></span> 
+              <span class="{{ transac.isRunningIcon }}"></span> 
+              <span class="{{ transac.isMultiIcon }}"></span> 
+              <span class="{{ transac.isLockIcon }}"></span> 
+            </td>
+            <td> <a href="#/transacs/{{transac.id}}/">{{transac.name}}</a> </td>
+            <td> {{transac.server}} </td>
+            <td> {{transac.valueDate | date: 'yyyy/MM/dd'}} </td>
+            <td> {{transac.processingTime | date: 'yyyy/MM/dd HH:mm:ss'}} </td>
+            <td> {{transac.lastEventTime | date: 'yyyy/MM/dd HH:mm:ss'}} </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</template>
