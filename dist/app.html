@@ -1,4 +1,5 @@
 <template>    
+  <require from="./pie"></require>
   <style>
     #view-source {
       position: fixed;
@@ -67,25 +68,34 @@
     </div>
     <main class="mdl-layout__content mdl-color--grey-100">
       <div class="mdl-grid demo-content">
-        <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
-          <svg fill="currentColor" width="200px" height="200px" viewBox="0 0 1 1" class="demo-chart mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop">
-            <use xlink:href="#piechart" mask="url(#piemask)" />
-            <text x="0.5" y="0.5" font-family="Roboto" font-size="0.3" fill="#888" text-anchor="middle" dy="0.1">82<tspan font-size="0.2" dy="-0.07">%</tspan></text>
-          </svg>
-          <svg fill="currentColor" width="200px" height="200px" viewBox="0 0 1 1" class="demo-chart mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop">
-            <use xlink:href="#piechart" mask="url(#piemask)" />
-            <text x="0.5" y="0.5" font-family="Roboto" font-size="0.3" fill="#888" text-anchor="middle" dy="0.1">82<tspan dy="-0.07" font-size="0.2">%</tspan></text>
-          </svg>
-          <svg fill="currentColor" width="200px" height="200px" viewBox="0 0 1 1" class="demo-chart mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop">
-            <use xlink:href="#piechart" mask="url(#piemask)" />
-            <text x="0.5" y="0.5" font-family="Roboto" font-size="0.3" fill="#888" text-anchor="middle" dy="0.1">82<tspan dy="-0.07" font-size="0.2">%</tspan></text>
-          </svg>
-          <svg fill="currentColor" width="200px" height="200px" viewBox="0 0 1 1" class="demo-chart mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop">
-            <use xlink:href="#piechart" mask="url(#piemask)" />
-            <text x="0.5" y="0.5" font-family="Roboto" font-size="0.3" fill="#888" text-anchor="middle" dy="0.1">82<tspan dy="-0.07" font-size="0.2">%</tspan></text>
-          </svg>
+        <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--6-col mdl-grid">
+          <div class="mdl-cell mdl-cell--12-col mdl-grid">
+            <div class="mdl-cell mdl-cell--6-col">
+              <div class="mdl-cell mdl-cell--12-col mdl-grid">
+                <label mdl="switch" class="mdl-js-ripple-effect"  for="switch-1">
+                  <input type="checkbox" id="switch-1" ref="switch1" class="mdl-switch__input" checked />
+                  <span class="mdl-switch__label">${pie1.action}</span>
+                </label>
+              </div>
+              <div class="mdl-cell mdl-cell--12-col">
+                <a href="#" mdl="button" class="mdl-button--accent mdl-button--raised mdl-js-ripple-effect" click.trigger="pie1.reset()" >Reset</a>
+              </div>
+            </div>
+            <pie class="demo-chart mdl-cell mdl-cell--6-col" pie.ref="pie1" running.bind="switch1.checked"/>
+          </div>
+
+          <div class="mdl-cell mdl-cell--12-col mdl-grid">
+            <div class="mdl-cell mdl-cell--6-col">
+              <label mdl="switch" class="mdl-js-ripple-effect"  for="switch-2">
+                <input type="checkbox" id="switch-2" ref="switch2" class="mdl-switch__input" />
+                <span class="mdl-switch__label">${pie2.action}</span>
+              </label>
+            </div>
+            <pie class="demo-chart mdl-cell mdl-cell--6-col" pie.ref="pie2" running.bind="switch2.checked"/>
+          </div>
+
         </div>
-        <div class="demo-graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--8-col">
+        <div class="demo-graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--6-col">
           <svg fill="currentColor" viewBox="0 0 500 250" class="demo-graph">
             <use xlink:href="#chart"/>
           </svg>
@@ -93,7 +103,23 @@
             <use xlink:href="#chart"/>
           </svg>
         </div>
-        <div class="demo-cards mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-grid mdl-grid--no-spacing">
+        <div class="mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--4-col">
+          <input mdl="slider" class="" type="range" min="0" max="100" value="0" tabindex="0"/>
+          <label mdl="switch" class="mdl-js-ripple-effect" for="switch-1">
+            <input type="checkbox" id="switch-1" class="mdl-switch__input" checked />
+            <span class="mdl-switch__label">coucou</span>
+          </label>
+          <label mdl='icon-toggle' class="mdl-js-ripple-effect" for="icon-toggle-1">
+            <input type="checkbox" id="icon-toggle-1" class="mdl-icon-toggle__input" checked />
+            <i class="mdl-icon-toggle__label material-icons">format_bold</i>
+          </label>
+           <label mdl="checkbox" class="mdl-js-ripple-effect" for="checkbox-1">
+            <input type="checkbox" id="checkbox-1" class="mdl-checkbox__input" checked />
+            <span class="mdl-checkbox__label">Checkbox</span>
+          </label>         
+        </div>
+
+        <div class="demo-cards mdl-cell mdl-cell--8-col mdl-cell--8-col-tablet mdl-grid mdl-grid--no-spacing">
           <div class="demo-updates mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
             <div class="mdl-card__title mdl-card--expand mdl-color--teal-300">
               <h2 class="mdl-card__title-text">Updates</h2>
@@ -146,18 +172,6 @@
       </div>
     </main>
   </div>
-    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" style="position: fixed; left: -1000px; height: -1000px;">
-      <defs>
-        <mask id="piemask" maskContentUnits="objectBoundingBox">
-          <circle cx=0.5 cy=0.5 r=0.49 fill="white" />
-          <circle cx=0.5 cy=0.5 r=0.40 fill="black" />
-        </mask>
-        <g id="piechart">
-          <circle cx=0.5 cy=0.5 r=0.5 />
-          <path d="M 0.5 0.5 0.5 0 A 0.5 0.5 0 0 1 0.95 0.28 z" stroke="none" fill="rgba(255, 255, 255, 0.75)" />
-        </g>
-      </defs>
-    </svg>
     <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 250" style="position: fixed; left: -1000px; height: -1000px;">
       <defs>
         <g id="chart">

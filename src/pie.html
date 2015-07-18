@@ -1,0 +1,16 @@
+<template>
+  <svg fill="currentColor" width="200px" height="200px" viewBox="0 0 1 1" >
+    <defs>
+      <mask id="piemask" maskContentUnits="objectBoundingBox">
+        <circle cx=0.5 cy=0.5 r=0.5 fill="white" />
+        <circle cx=0.5 cy=0.5 r=0.40 fill="black" />
+      </mask>
+    </defs>
+    <g id="piechart">
+      <circle cx=0.5 cy=0.5 r=0.5 mask="url(#piemask)"/>
+      <path d="${path}" stroke="none" fill="rgba(255, 255, 255, 0.75)" />
+    </g>
+
+    <text x="0.5" y="0.5" font-family="Roboto" font-size="0.3" fill="#888" text-anchor="middle" dy="0.1">${percentage}<tspan font-size="0.2" dy="-0.07">%</tspan></text>
+  </svg>
+</template>
