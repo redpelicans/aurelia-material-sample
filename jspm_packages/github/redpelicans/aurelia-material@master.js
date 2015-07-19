@@ -1,0 +1,1 @@
+module.exports = require("github:redpelicans/aurelia-material@master/index");

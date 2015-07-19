@@ -145,7 +145,9 @@ System.config({
       "process": "npm:process@0.10.1"
     },
     "github:redpelicans/aurelia-material@master": {
-      "google/material-design-lite": "github:google/material-design-lite@1.0.0"
+      "google/material-design-lite": "github:google/material-design-lite@1.0.0",
+      "jquery": "github:components/jquery@2.1.4",
+      "lodash": "npm:lodash@3.10.0"
     },
     "github:twbs/bootstrap@3.3.5": {
       "jquery": "github:components/jquery@2.1.4"

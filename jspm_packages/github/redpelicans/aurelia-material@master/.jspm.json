@@ -1,0 +1,63 @@
+{
+  "name": "aurelia-material",
+  "version": "0.0.1",
+  "description": "Aurelia wrapper for Material Design Lite",
+  "main": "index.js",
+  "keywords": [
+    "aurelia",
+    "material design lite"
+  ],
+  "devDependencies": {
+    "babel": "npm:babel-core@^5.1.13",
+    "babel-runtime": "npm:babel-runtime@^5.1.13",
+    "core-js": "npm:core-js@^0.9.4"
+  },
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/redpelicans/aurelia-material.git"
+  },
+  "contributors": [
+    "eric.basley@redpelicans.com",
+    "nicolas.briemant@redpelicans.com"
+  ],
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/redpelicans/aurelia-material/issues"
+  },
+  "homepage": "https://github.com/redpelicans/aurelia-material#readme",
+  "jspm": {
+    "directories": {
+      "lib": "dist"
+    },
+    "dependencies": {
+      "google/material-design-lite": "github:google/material-design-lite@^1.0.0",
+      "jquery": "github:components/jquery@^2.1.4",
+      "lodash": "npm:lodash@^3.10.0"
+    },
+    "devDependencies": {
+      "babel": "npm:babel-core@^5.1.13",
+      "babel-runtime": "npm:babel-runtime@^5.1.13",
+      "core-js": "npm:core-js@^0.9.4"
+    },
+    "overrides": {
+      "github:google/material-design-lite@1.0.0": {
+        "main": "./material.js"
+      }
+    }
+  },
+  "directories": {
+    "lib": "dist"
+  },
+  "overrides": {
+    "github:google/material-design-lite@1.0.0": {
+      "main": "./material.js"
+    }
+  },
+  "registry": "github",
+  "dependencies": {
+    "google/material-design-lite": "github:google/material-design-lite@^1.0.0",
+    "jquery": "github:components/jquery@^2.1.4",
+    "lodash": "npm:lodash@^3.10.0"
+  }
+}

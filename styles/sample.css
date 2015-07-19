@@ -1,0 +1,8 @@
+.point-slider {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+}
+
