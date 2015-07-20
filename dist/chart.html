@@ -6,7 +6,10 @@
   </div>
 
   <div class="mdl-cell mdl-cell--2-col">
-    <button  mdl="button" class="mdl-button--fab mdl-button--raised mdl-js-ripple-effect mdl-button--colored" click.trigger="addPoint()" >
+    <div mdl="tooltip" for="add" >
+      Add a data point
+    </div>
+    <button  id="add" show.bind="canAdd" mdl="button" class="mdl-button--fab mdl-button--raised mdl-js-ripple-effect mdl-button--colored" click.trigger="addPoint()" >
       <i class="material-icons">add</i>
     </button>
   </div>
@@ -16,7 +19,10 @@
     </div>
   </div>
   <div class="mdl-cell mdl-cell--2-col">
-    <button  mdl="button" class="mdl-button--fab mdl-button--raised mdl-js-ripple-effect mdl-button--colored" click.trigger="removePoint()" >
+    <div mdl="tooltip" for="remove" >
+      Remove a data point
+    </div>
+    <button id="remove"  show.bind="canRemove" mdl="button" class="mdl-button--fab mdl-button--raised mdl-js-ripple-effect mdl-button--colored" click.trigger="removePoint()" >
       <i class="material-icons">remove</i>
     </button>
   </div>

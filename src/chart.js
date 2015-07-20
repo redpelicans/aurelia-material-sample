@@ -19,14 +19,19 @@ class Point{
 export class ChartCustomElement {
 
     constructor() {
-      // TODO
-      console.log(this.arity)
+      this.canAdd = true;
+      this.canRemove = true;
+      this.series = [];
+    }
+
+    attached(){
       this.arity = this.arity ? Number(this.arity) : 5;
       let c =  1;
       this.series = Array.from(new Array(this.arity), () => new Point(`${c++}.`, 0, randInt(0, 500), () => this.updatePoints()));
       this.updateAbscissa();
       this.updatePoints();
-     }
+
+    }
 
     updatePoints(){
       function y(y){ return (500-y)*.4 };
@@ -41,14 +46,25 @@ export class ChartCustomElement {
       }
     }
 
+    arityChanged(){
+      if(this.series.length <=1) this.canRemove = false;
+      else if(this.series.length >= 5) this.canAdd = false;
+      else{
+        this.canAdd = true;
+        this.canRemove = true;
+      }
+    }
+
     addPoint(){
       this.series.push( new Point(`${this.series.length+1}.`, 0, randInt(0, 500), () => this.updatePoints()));
+      this.arity = this.series.length;
       this.updateAbscissa();
       this.updatePoints();
     }
 
     removePoint(){
       this.series.pop();
+      this.arity = this.series.length;
       this.updateAbscissa();
       this.updatePoints();
     }

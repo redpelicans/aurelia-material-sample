@@ -1,6 +1,7 @@
 <template>    
   <require from="./pie"></require>
   <require from="./chart"></require>
+  <require from="./data-table"></require>
   <style>
     #view-source {
       position: fixed;
@@ -54,17 +55,17 @@
         </div>
       </header>
       <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
-        <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons">home</i>Home</a>
-        <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons">inbox</i>Inbox</a>
-        <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons">delete</i>Trash</a>
-        <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons">report</i>Spam</a>
-        <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons">forum</i>Forums</a>
-        <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons">flag</i>Updates</a>
-        <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons">local_offer</i>Promos</a>
-        <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons">shopping_cart</i>Purchases</a>
-        <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons">people</i>Social</a>
+        <a class="mdl-navigation__link" href="#"><i class="mdl-color-text--blue-grey-400 material-icons">home</i>Home</a>
+        <a class="mdl-navigation__link" href="#"><i class="mdl-color-text--blue-grey-400 material-icons">inbox</i>Inbox</a>
+        <a class="mdl-navigation__link" href="#"><i class="mdl-color-text--blue-grey-400 material-icons">delete</i>Trash</a>
+        <a class="mdl-navigation__link" href="#"><i class="mdl-color-text--blue-grey-400 material-icons">report</i>Spam</a>
+        <a class="mdl-navigation__link" href="#"><i class="mdl-color-text--blue-grey-400 material-icons">forum</i>Forums</a>
+        <a class="mdl-navigation__link" href="#"><i class="mdl-color-text--blue-grey-400 material-icons">flag</i>Updates</a>
+        <a class="mdl-navigation__link" href="#"><i class="mdl-color-text--blue-grey-400 material-icons">local_offer</i>Promos</a>
+        <a class="mdl-navigation__link" href="#"><i class="mdl-color-text--blue-grey-400 material-icons">shopping_cart</i>Purchases</a>
+        <a class="mdl-navigation__link" ><i class="mdl-color-text--blue-grey-400 material-icons">people</i>Social</a>
         <div class="mdl-layout-spacer"></div>
-        <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons">help_outline</i></a>
+        <a class="mdl-navigation__link" href="#"><i class="mdl-color-text--blue-grey-400 material-icons">help_outline</i></a>
       </nav>
     </div>
     <main class="mdl-layout__content mdl-color--grey-100">
@@ -98,26 +99,44 @@
         </div>
 
         <div class="demo-graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--6-col mdl-grid">
-           <chart class="demo-graph mdl-cell mdl-cell--12-col mdl-grid" arity=3 />
+          <chart chart.ref="chart" class="demo-graph mdl-cell mdl-cell--12-col mdl-grid" arity=3 />
         </div>
 
-        <div class="mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--4-col">
-          <input mdl="slider" class="" type="range" min="0" max="100" value="0" tabindex="0"/>
-          <label mdl="switch" class="mdl-js-ripple-effect" for="switch-1">
-            <input type="checkbox" id="switch-1" class="mdl-switch__input" checked />
-            <span class="mdl-switch__label">coucou</span>
-          </label>
-          <label mdl='icon-toggle' class="mdl-js-ripple-effect" for="icon-toggle-1">
-            <input type="checkbox" id="icon-toggle-1" class="mdl-icon-toggle__input" checked />
-            <i class="mdl-icon-toggle__label material-icons">format_bold</i>
-          </label>
-           <label mdl="checkbox" class="mdl-js-ripple-effect" for="checkbox-1">
-            <input type="checkbox" id="checkbox-1" class="mdl-checkbox__input" checked />
-            <span class="mdl-checkbox__label">Checkbox</span>
-          </label>         
+        <div class="mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--8-col mdl-grid">
+          <div mdl="tabs" class="mdl-js-ripple-effect">
+            <div class="mdl-tabs__tab-bar">
+              <a href="#starks-panel" class="mdl-tabs__tab is-active">Starks</a>
+              <a href="#lannisters-panel" class="mdl-tabs__tab">Lannisters</a>
+              <a href="#targaryens-panel" class="mdl-tabs__tab">Targaryens</a>
+            </div>
+
+            <div class="mdl-tabs__panel is-active mdl-cell mdl-cell--12-col mdl-grid" id="starks-panel">
+              <div class="mdl-layout-spacer mdl-cell mdl-cell--12-col"></div>
+              <data-table class="mdl-cell mdl-cell--12-col" series.bind="chart.series"/>
+            </div>
+
+            <div class="mdl-tabs__panel mdl-grid" id="lannisters-panel">
+              <div class="mdl-layout-spacer mdl-cell mdl-cell--12-col"></div>
+              <ul>
+                <li>Tywin</li>
+                <li>Cersei</li>
+                <li>Jamie</li>
+                <li>Tyrion</li>
+              </ul>
+            </div>
+
+            <div class="mdl-tabs__panel mdl-grid" id="targaryens-panel">
+              <div class="mdl-layout-spacer mdl-cell mdl-cell--12-col"></div>
+              <ul>
+                <li>Viserys</li>
+                <li>Daenerys</li>
+              </ul>
+            </div>
+          </div>
+
         </div>
 
-        <div class="demo-cards mdl-cell mdl-cell--8-col mdl-cell--8-col-tablet mdl-grid mdl-grid--no-spacing">
+        <div class="demo-cards mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-grid mdl-grid--no-spacing">
           <div class="demo-updates mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
             <div class="mdl-card__title mdl-card--expand mdl-color--teal-300">
               <h2 class="mdl-card__title-text">Updates</h2>
@@ -127,43 +146,6 @@
             </div>
             <div class="mdl-card__actions mdl-card--border">
               <a href="#" mdl="button" class="mdl-js-ripple-effect">Read More</a>
-            </div>
-          </div>
-          <div class="demo-separator mdl-cell--1-col"></div>
-          <div class="demo-options mdl-card mdl-color--deep-purple-500 mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--3-col-tablet mdl-cell--12-col-desktop">
-            <div class="mdl-card__supporting-text mdl-color-text--blue-grey-50">
-              <h3>View options</h3>
-              <ul>
-                <li>
-                  <label for="chkbox1" mdl="checkbox" class="mdl-js-ripple-effect">
-                    <input type="checkbox" id="chkbox1" class="mdl-checkbox__input" />
-                    <span class="mdl-checkbox__label">Click per object</span>
-                  </label>
-                </li>
-                <li>
-                  <label for="chkbox2" mdl="checkbox" class="mdl-js-ripple-effect">
-                    <input type="checkbox" id="chkbox2" class="mdl-checkbox__input" />
-                    <span class="mdl-checkbox__label">Views per object</span>
-                  </label>
-                </li>
-                <li>
-                  <label for="chkbox3" mdl="checkbox" class="mdl-js-ripple-effect">
-                    <input type="checkbox" id="chkbox3" class="mdl-checkbox__input" />
-                    <span class="mdl-checkbox__label">Objects selected</span>
-                  </label>
-                </li>
-                <li>
-                  <label for="chkbox4" mdl="checkbox" class="mdl-js-ripple-effect">
-                    <input type="checkbox" id="chkbox4" class="mdl-checkbox__input" />
-                    <span class="mdl-checkbox__label">Objects viewed</span>
-                  </label>
-                </li>
-              </ul>
-            </div>
-            <div class="mdl-card__actions mdl-card--border">
-              <a href="#" mdl="button" class="mdl-js-ripple-effect mdl-color-text--blue-grey-50">Change location</a>
-              <div class="mdl-layout-spacer"></div>
-              <i class="material-icons">location_on</i>
             </div>
           </div>
         </div>

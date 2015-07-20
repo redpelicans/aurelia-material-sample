@@ -1,0 +1,16 @@
+<template>
+  <table mdl="data-table" class="mdl-shadow--2dp">
+    <thead>
+      <th class="mdl-data-table__cell--non-numeric">Label</th>
+      <th>X</th>
+      <th>Y</th>
+    </thead>
+    <tbody>
+      <tr repeat.for="point of series">
+        <td class="mdl-data-table__cell--non-numeric">${point.label}</td>
+        <td>${point.x | float:2}</td>
+        <td>${point.y | float:2}</td>
+      </tr>
+    </tbody>
+  </table>
+</template>
